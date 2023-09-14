@@ -1,0 +1,20 @@
+Types of Requests
+
+1. GET  (Limited Data)
+ 
+2. POST  (Unlimited Data)
+
+Lets receive data from get/post method in node express server
+
+
+Software Architecture Pattern
+
+monolithic
+micro service architecture
+
+
+
+Query String  -> Payload
+
+hostname:port/routename?name=value&gender=value&age=value
+https://www.google.com/search?q=how+to+set+local+branch+to+main+branch
