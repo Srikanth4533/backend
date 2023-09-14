@@ -1,9 +1,33 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
+
+const PORT = process.env.PORT || 4000;
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.status(200).send("Hello World");
 });
+
+// Middleware Functions
+
+app.get(
+  "/middleware",
+  (req, res, next) => {
+    console.log("Middleware Called");
+    req.query.name = req.query.name.toUpperCase();
+    req.sri = "srikanth sri";
+    next();
+  },
+  (req, res) => {
+    res.json({
+      success: true,
+      message: "Hello World From Middleware",
+      name: req.sri,
+      data: req.query,
+    });
+  }
+);
 
 // object.method(routename, cbfn)
 app.get("/about", (req, res) => {
@@ -16,19 +40,31 @@ app.get("/sri", (req, res) => {
 });
 
 app.get("/hello", (req, res) => {
-  console.log(req.query);
+  //   console.log(req.query);
   res.status(200).json({
     success: true,
     data: req.query,
   });
 });
 
-// app.post("/hello", (req, res) => {
-//   res.status(200).json({
-//     message: "Hello from post",
-//   });
-// });
+// URL segment
+app.get("/students/:std", (req, res) => {
+  //   console.log(req.params);
+  res.status(200).json({
+    message: "Hello from post",
+    data: req.params,
+  });
+});
 
-app.listen(4000, () => {
-  console.log(`Server started at port no 4000`);
+// Body
+app.post("/students", (req, res) => {
+  //   console.log(req.body);
+  res.status(200).json({
+    message: "Hello from post",
+    data: req.body,
+  });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server started at port no ${PORT}`);
 });

@@ -18,3 +18,31 @@ Query String  -> Payload
 
 hostname:port/routename?name=value&gender=value&age=value
 https://www.google.com/search?q=how+to+set+local+branch+to+main+branch
+
+
+How many types we can send data/payload to the server ?
+
+What is the maximum limit of GET request?
+ 2048 characters
+   eg. https://www.google.com/search?q=how+to+set
+
+1. Query String (GET)
+      ?name=value&gender=value&age=value
+      Get request limited to a maximum of 2048 characters
+
+2. JSON body   (POST)
+    JSON object
+            {
+                key: value
+            }
+
+    Postman POST>BODY>RAW>JSON>data
+
+3. URL segment /
+    
+    localhost:4000/students/srikanth
+
+
+  Client ---Request----->MiddlewareFunction----->Server
+
+  Client <---------------Response(JSON)<----------Middleware<--------------Server
