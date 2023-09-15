@@ -46,3 +46,10 @@ What is the maximum limit of GET request?
   Client ---Request----->MiddlewareFunction----->Server
 
   Client <---------------Response(JSON)<----------Middleware<--------------Server
+
+
+How To Export The Middleware Functions ??
+
+Why we are exporting the middleware function ?
+
+for reusability purpose
