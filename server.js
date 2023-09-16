@@ -6,8 +6,24 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 app.use(express.json());
 
+app.use((req, res, next) => {
+  if (!(req.method === "GET")) {
+    next();
+  } else {
+    res.json({
+      message: "Get Request is not Allowed",
+    });
+  }
+});
+
 app.get("/", (req, res) => {
   res.status(200).send("Hello World");
+});
+
+app.post("/student", (req, res) => {
+  res.status(200).json({
+    message: "Hello World",
+  });
 });
 
 // Middleware Functions
@@ -67,13 +83,17 @@ app.get("/students/:std", (req, res) => {
 });
 
 // Body
-app.post("/students", (req, res) => {
-  //   console.log(req.body);
-  res.status(200).json({
-    message: "Hello from post",
-    data: req.body,
-  });
-});
+app.post(
+  "/students",
+  (req, res, next) => {},
+  (req, res) => {
+    //   console.log(req.body);
+    res.status(200).json({
+      message: "Hello from post",
+      data: req.body,
+    });
+  }
+);
 
 app.listen(PORT, () => {
   console.log(`Server started at port no ${PORT}`);
