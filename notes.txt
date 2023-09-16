@@ -53,3 +53,38 @@ How To Export The Middleware Functions ??
 Why we are exporting the middleware function ?
 
 for reusability purpose
+
+Types Of Export in NodeJS
+
+1. Default Export 
+     default keyword
+
+2. Named Export
+    2.1 module.exports = { v } JS object
+    2.2 export
+
+  name 
+  surname
+  address
+  mobile no
+
+  srikanth kondakalla makthaguda 8466919759
+
+  app.get(routename, mwfn1, cbfn)
+
+
+Types Of Middleware
+
+1. Application Level Middleware --- called before the routename 
+
+    Eg. 
+         API - Application Programmable Interface
+         Endpoint / Api
+
+         Create an api which can handle the request type(GET/POST) consider the below example
+
+         GET Method Block
+         POST Method Pass (next())
+
+
+Client ----> App.use(middleware) ----> Routename ----> Mwfn1 ----> Mwfn2 ----> CBFN(Server)
