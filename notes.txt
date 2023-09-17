@@ -88,3 +88,11 @@ Types Of Middleware
 
 
 Client ----> App.use(middleware) ----> Routename ----> Mwfn1 ----> Mwfn2 ----> CBFN(Server)
+
+HTTP Request method
+    .GET
+    .POST
+    .PUT
+    .DELETE
+
+HTTP = Hyper Text Transfer Protocol

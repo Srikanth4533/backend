@@ -6,14 +6,25 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 app.use(express.json());
 
+// Error Handling Middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    message: "Something Went Wrong",
+  });
+});
+
+// Application level middleware
+
 app.use((req, res, next) => {
-  if (!(req.method === "GET")) {
-    next();
-  } else {
-    res.json({
-      message: "Get Request is not Allowed",
-    });
-  }
+  // if (!(req.method === "GET")) {
+  //   next();
+  // } else {
+  //   res.json({
+  //     message: "Get Request is not Allowed",
+  //   });
+  // }
+  next();
 });
 
 app.get("/", (req, res) => {
@@ -27,7 +38,6 @@ app.post("/student", (req, res) => {
 });
 
 // Middleware Functions
-
 app.get(
   "/middleware",
   mwfn1,
