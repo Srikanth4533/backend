@@ -2,18 +2,30 @@ require("dotenv").config();
 const express = require("express");
 const { mwfn1, mwfn2 } = require("./middlewares/myMiddleware");
 const app = express();
+const { body, validationResult } = require("express-validator");
 
 const PORT = process.env.PORT || 4000;
 app.use(express.json());
 
+// Error Handling Middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    message: "Something Went Wrong",
+  });
+});
+
+// Application level middleware
+
 app.use((req, res, next) => {
-  if (!(req.method === "GET")) {
-    next();
-  } else {
-    res.json({
-      message: "Get Request is not Allowed",
-    });
-  }
+  // if (!(req.method === "GET")) {
+  //   next();
+  // } else {
+  //   res.json({
+  //     message: "Get Request is not Allowed",
+  //   });
+  // }
+  next();
 });
 
 app.get("/", (req, res) => {
@@ -27,7 +39,6 @@ app.post("/student", (req, res) => {
 });
 
 // Middleware Functions
-
 app.get(
   "/middleware",
   mwfn1,
@@ -85,9 +96,18 @@ app.get("/students/:std", (req, res) => {
 // Body
 app.post(
   "/students",
-  (req, res, next) => {},
+  body("email").isEmail(),
+  body("password").isLength({ min: 4 }),
   (req, res) => {
     //   console.log(req.body);
+    const errors = validationResult(req);
+    console.log(errors.isEmpty());
+    if (!errors.isEmpty()) {
+      res.status(400).json({
+        message: "Validation error",
+        errors,
+      });
+    }
     res.status(200).json({
       message: "Hello from post",
       data: req.body,
