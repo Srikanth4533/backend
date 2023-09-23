@@ -96,3 +96,33 @@ HTTP Request method
     .DELETE
 
 HTTP = Hyper Text Transfer Protocol
+
+Data Validation in Express
+
+Validation ?
+
+email = @ .
+   srikanth@gmail.com
+   srikanth@yahoo.com
+
+Please Enter your name
+  All Alphabets
+  srikanth
+
+Please Enter your Aadhar no
+  Only expecting numbers
+
+Type of Validations ?
+
+1. Client Side Validations (ReactJS)
+2. Server Side Validations (Node/Express App)
+
+   Email --> @.
+   name --> a-zA-Z
+   aadhar --> 0-9
+   password --> min 8 character Alphanumeric
+
+
+Serialization of function
+
+res.status().json()

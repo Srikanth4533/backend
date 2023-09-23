@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const { mwfn1, mwfn2 } = require("./middlewares/myMiddleware");
 const app = express();
+const { body, validationResult } = require("express-validator");
 
 const PORT = process.env.PORT || 4000;
 app.use(express.json());
@@ -95,9 +96,18 @@ app.get("/students/:std", (req, res) => {
 // Body
 app.post(
   "/students",
-  (req, res, next) => {},
+  body("email").isEmail(),
+  body("password").isLength({ min: 4 }),
   (req, res) => {
     //   console.log(req.body);
+    const errors = validationResult(req);
+    console.log(errors.isEmpty());
+    if (!errors.isEmpty()) {
+      res.status(400).json({
+        message: "Validation error",
+        errors,
+      });
+    }
     res.status(200).json({
       message: "Hello from post",
       data: req.body,
