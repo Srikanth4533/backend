@@ -72,10 +72,6 @@ app.get("/about", (req, res) => {
   res.status(200).send("About Page");
 });
 
-app.get("/sri", (req, res) => {
-  res.status(200).send("Hello Srikanth");
-});
-
 app.get("/hello", (req, res) => {
   //   console.log(req.query);
   res.status(200).json({
