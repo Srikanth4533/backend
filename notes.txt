@@ -126,3 +126,14 @@ Type of Validations ?
 Serialization of function
 
 res.status().json()
+
+
+Promises
+
+let po = new Promise((resolve, reject) =>{})
+
+po.then().then().catch().finally()
+
+then() = success = resolve
+
+catch() = errors = reject
