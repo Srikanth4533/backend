@@ -137,3 +137,32 @@ po.then().then().catch().finally()
 then() = success = resolve
 
 catch() = errors = reject
+
+
+Async/Await
+
+async and await make promises easier to write
+
+async makes a function return a Promise
+
+await makes a function wait for a Promise
+
+
+Types Of Databases
+
+SQL = Structured Query Language
+
+1. SQL Based
+    Eg. MySQL, MariaDB, SQL Server, IBM DB2
+
+2. NoSQL Based Databases
+    Eg. MongoDB, Redis
+
+Node/Express + MongoDB
+
+ServerSide Language + NoSQL
+ServerSide Language + SQL
+
+We must have MongoDB Database
+1. Cloud
+2. Local Machine

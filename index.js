@@ -57,3 +57,17 @@ po.then((data) => {
   .finally((all) => {
     console.log("all", all);
   });
+
+async function sayHello() {
+  let po = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Hello Srikanth!");
+    }, 5000);
+  });
+
+  let result = await po;
+
+  console.log(result);
+}
+
+sayHello();
